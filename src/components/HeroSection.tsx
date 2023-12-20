@@ -1,26 +1,56 @@
 'use client'
-import { FC, useRef } from 'react'
+import { FC, use, useEffect, useRef } from 'react'
 import { gsap } from "gsap";
+import TextPlugin from 'gsap/TextPlugin';
 
 interface HeroSectionProps {
 
 }
 
 const HeroSection: FC<HeroSectionProps> = ({ }) => {
-  const heroHeading = useRef<HTMLDivElement>(null);
+  const heroHeading = useRef(null);
 
-  gsap.to(heroHeading, {
-    duration: 2,
-    text: "This is the new text",
-    ease: "none",
-  });
+  gsap.registerPlugin(TextPlugin)
+
+  useEffect(() => {
+    const heroHeadingTimeline = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+
+    heroHeadingTimeline.to(heroHeading.current, {
+      duration: 1,
+      text: " a DevOps engineer",
+      ease: "none",
+      delay: 3
+    }, ">");
+
+    heroHeadingTimeline.to(heroHeading.current, {
+      duration: 1,
+      text: "an Entrepreneur",
+      ease: "none",
+      delay: 3
+    }, ">");
+
+    heroHeadingTimeline.to(heroHeading.current, {
+      duration: 1,
+      text: "a Fullstack developer",
+      ease: "none",
+      delay: 3
+    }, ">");
+
+    heroHeadingTimeline.to(heroHeading.current, {
+      duration: 1,
+      text: "Shreshth Verma",
+      ease: "none",
+      delay: 3
+    }, ">");
+  })
+
 
   return (
-    <section className='flex items-center font-bold text-9xl first-letter box-border h-screen pt-16 '>
-      <div ref={heroHeading}>
-        I am a 
-        <br />
-        developer.
+    <section className='flex items-center font-bold text-8xl first-letter box-border h-screen pt-16 '>
+      <div>
+        I am<br />
+        <span ref={heroHeading}>a fullstack developer</span>
+        .
       </div>
     </section>
   )
