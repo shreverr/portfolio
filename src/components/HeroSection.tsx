@@ -14,6 +14,13 @@ const HeroSection: FC<HeroSectionProps> = ({ }) => {
 
   useEffect(() => {
     const heroHeadingTimeline = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+    
+    heroHeadingTimeline.to(heroHeading.current, {
+      duration: 1,
+      text: "a Fullstack developer",
+      ease: "none",
+      delay: 3
+    }, ">");
 
     heroHeadingTimeline.to(heroHeading.current, {
       duration: 1,
@@ -31,13 +38,6 @@ const HeroSection: FC<HeroSectionProps> = ({ }) => {
 
     heroHeadingTimeline.to(heroHeading.current, {
       duration: 1,
-      text: "a Fullstack developer",
-      ease: "none",
-      delay: 3
-    }, ">");
-
-    heroHeadingTimeline.to(heroHeading.current, {
-      duration: 1,
       text: "Shreshth Verma",
       ease: "none",
       delay: 3
@@ -46,10 +46,10 @@ const HeroSection: FC<HeroSectionProps> = ({ }) => {
 
 
   return (
-    <section className='flex items-center font-bold text-8xl first-letter box-border h-screen pt-16 '>
+    <section className='flex flex-col items-center justify-around font-bold text-2xl md:justify-start md:flex-row md:text-5xl lg:text-7xl xl:text-8xl first-letter box-border h-screen pt-16'>
       <div>
         I am<br />
-        <span ref={heroHeading}>a fullstack developer</span>
+        <span ref={heroHeading} className=''>Shreshth Verma</span>
         .
       </div>
     </section>
