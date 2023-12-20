@@ -8,7 +8,7 @@ export default function Home() {
     <main className='px-4 flex flex-col container'>
       <Model className="fixed z-0" />
       <HeroSection />
+      <section className="h-screen"></section>
     </main>
-  </>
-  )
+  </>)
 }

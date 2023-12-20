@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, type FC, useState } from 'react'
+import { useEffect, type FC, useState, useRef } from 'react'
 import { theSuavity } from '@/fonts'
 import { navLinks } from '@/types/types'
+import gsap from 'gsap'
 
 interface NavBarProps {
 
@@ -31,6 +32,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
 
   const [show, setShow] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const navBar = useRef(null);
 
   const controlNavbar = () => {
     if (window.scrollY < lastScrollY) { // if scroll down hide the navbar
@@ -45,15 +47,19 @@ const NavBar: FC<NavBarProps> = ({ }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', controlNavbar);
-
     // cleanup function
     return () => {
       window.removeEventListener('scroll', controlNavbar);
     };
+    
   }, [lastScrollY]);
-
+  
+  !show ? gsap.to(navBar.current, { y: '0%', duration: 1, ease: 'power4.out' })
+    : gsap.to(navBar.current, { y: '-100%', duration: 1, ease: 'power4.out' })
+  
   return (
-    <nav className={`${show ? 'hidden' : 'backdrop-blur bg-black/20'} flex justify-between items-center w-full fixed top-0 left-0 p-4 z-50`}>
+    <nav ref={navBar} className={`backdrop-blur bg-black/20 flex justify-between items-center
+      w-full fixed top-0 left-0 p-4 z-50 shadow-[0px_10px_30px_-10px_rgba(255,255,255,0.1)]`}>
       <div className={`${theSuavity.className} text-2xl`}>
         {name}
       </div>
