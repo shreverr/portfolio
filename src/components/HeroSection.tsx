@@ -47,10 +47,10 @@ const HeroSection: FC<HeroSectionProps> = ({ }) => {
 
 
   return (
-    <section className='flex flex-col items-center justify-around font-bold text-2xl md:justify-start md:flex-row md:text-5xl lg:text-7xl xl:text-8xl first-letter box-border h-screen pt-16 z-10'>
-      <div>
+    <section className='flex flex-col items-center justify-around font-bold text-2xl md:justify-start md:flex-row md:text-5xl lg:text-7xl xl:text-8xl first-letter box-border h-screen pt-16'>
+      <div className='z-10'>
         I am<br />
-        <span ref={heroHeading} className=''></span>
+        <span ref={heroHeading} className='z-10'></span>
         .
       </div>
     </section>

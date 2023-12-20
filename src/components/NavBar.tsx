@@ -53,7 +53,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
   }, [lastScrollY]);
 
   return (
-    <nav className={`${show ? 'hidden' : 'backdrop-blur bg-black/20'} flex justify-between items-center w-full fixed top-0 left-0 p-4`}>
+    <nav className={`${show ? 'hidden' : 'backdrop-blur bg-black/20'} flex justify-between items-center w-full fixed top-0 left-0 p-4 z-50`}>
       <div className={`${theSuavity.className} text-2xl`}>
         {name}
       </div>
