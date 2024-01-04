@@ -4,17 +4,12 @@ import { montserrat } from '@/fonts'
 import './globals.css'
 import AnimatedCursor from 'react-animated-cursor'
 
-
 export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'shreshth verma\'s portfolio',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children, }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${montserrat.className} bg-black text-white flex flex-col items-center justify-center w-full`}>
